@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -5,17 +6,33 @@ import { links } from "@/lib/data";
 
 export function Closing() {
   return (
-    <section id="contato" className="relative py-32 md:py-48 border-t border-off-white/10">
-      <Container className="text-center">
-        <Reveal>
-          <h2 className="font-heading font-medium text-off-white mx-auto max-w-[780px] text-3xl md:text-[48px] leading-tight tracking-tight">
-            O próximo avanço da educação começa com as decisões que tomamos
-            hoje.
-          </h2>
-        </Reveal>
+    <section
+      id="contato"
+      className="relative py-40 md:py-56 border-t border-off-white/10 overflow-hidden"
+    >
+      <Container className="relative text-center">
+        <div className="relative mx-auto max-w-[880px]">
+          {/* the mark cuts across the statement itself — a real optical
+              interaction, not a faded watermark sitting behind it */}
+          <Image
+            src="/images/brand/symbol-mint.png"
+            alt=""
+            aria-hidden
+            width={520}
+            height={470}
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[460px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-40 mix-blend-overlay md:h-[520px] md:w-[560px]"
+          />
 
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-8 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed text-muted">
+          <Reveal>
+            <h2 className="relative font-heading font-medium text-off-white text-5xl md:text-[80px] leading-[0.98] tracking-tight">
+              O próximo avanço da educação começa com as decisões que
+              tomamos hoje.
+            </h2>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.12}>
+          <p className="mx-auto mt-10 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed text-muted">
             Liderar uma instituição de ensino é equilibrar pessoas,
             propósito, excelência acadêmica e resultado. É criar as
             condições para que estudantes, professores e organizações
@@ -23,8 +40,8 @@ export function Closing() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.2} className="mt-14">
-          <p className="font-heading text-xl text-off-white">
+        <Reveal delay={0.2} className="mt-16">
+          <p className="font-heading font-medium text-xl text-off-white">
             Michel Calil Abrão Neto
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.2em] text-mint">

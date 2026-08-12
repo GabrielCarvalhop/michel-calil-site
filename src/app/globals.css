@@ -20,8 +20,8 @@
   --color-off-white: var(--color-off-white);
   --color-muted: var(--color-muted);
 
-  --font-heading: var(--font-manrope);
-  --font-body: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-body: var(--font-instrument);
 
   --container-content: 1280px;
 }
@@ -45,6 +45,13 @@ body {
 ::selection {
   background: var(--color-mint);
   color: var(--color-near-black);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--color-mint);
+  outline-offset: 3px;
+  border-radius: 1px;
 }
 
 .font-heading {

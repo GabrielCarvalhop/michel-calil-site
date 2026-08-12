@@ -8,7 +8,6 @@ import { Leadership } from "@/components/sections/Leadership";
 import { Science } from "@/components/sections/Science";
 import { Education } from "@/components/sections/Education";
 import { Projects } from "@/components/sections/Projects";
-import { Speaking } from "@/components/sections/Speaking";
 import { Awards } from "@/components/sections/Awards";
 import { Closing } from "@/components/sections/Closing";
 
@@ -16,7 +15,14 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="relative">
+        {/* the spine — one continuous structural line running the length
+            of the page, derived from the brand's cut angle. sections
+            attach to it, cross it, or deliberately break from it. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-6 hidden w-px bg-gradient-to-b from-transparent via-mint/[0.14] to-transparent md:left-10 md:block"
+        />
         <Hero />
         <Manifesto />
         <Metrics />
@@ -25,7 +31,6 @@ export default function Home() {
         <Science />
         <Education />
         <Projects />
-        <Speaking />
         <Awards />
         <Closing />
       </main>

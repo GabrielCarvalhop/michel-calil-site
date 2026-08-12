@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { BrandMark } from "@/components/ui/BrandMark";
 import { navLinks, links } from "@/lib/data";
 
 export function Header() {
@@ -38,7 +38,13 @@ export function Header() {
           className="flex items-center gap-2 text-off-white"
           aria-label="Michel Calil Abrão Neto — início"
         >
-          <BrandMark className="h-7 w-8 text-mint" />
+          <Image
+            src="/images/brand/symbol-mint.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-7 w-7 object-contain"
+          />
           <span className="font-heading text-sm tracking-[0.08em] hidden sm:inline">
             MICHEL CALIL
           </span>
@@ -77,14 +83,20 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 flex flex-col bg-near-black md:hidden"
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-near-black md:hidden"
           >
             <div className="flex items-center justify-between px-6 py-5">
-              <BrandMark className="h-7 w-8 text-mint" />
+              <Image
+            src="/images/brand/symbol-mint.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-7 w-7 object-contain"
+          />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -94,7 +106,7 @@ export function Header() {
                 <X size={26} />
               </button>
             </div>
-            <nav className="flex flex-1 flex-col justify-center gap-6 px-8">
+            <nav className="flex flex-1 flex-col justify-center gap-5 px-8 py-8">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}

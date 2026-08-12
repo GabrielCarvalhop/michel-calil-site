@@ -110,6 +110,7 @@ export const featuredPublication = {
     "Interaction Between Sclerostin and Mast Cells in Fibro-Osseous Lesions of the Jaws",
   journal: "Oral Diseases",
   year: "2025",
+  url: "https://onlinelibrary.wiley.com/doi/10.1111/odi.15232",
 };
 
 export const education = [
@@ -192,12 +193,13 @@ export const navLinks = [
   { label: "Trajetória", href: "#trajetoria" },
   { label: "Gestão", href: "#gestao" },
   { label: "Ciência", href: "#ciencia" },
-  { label: "Palestras", href: "#palestras" },
   { label: "Contato", href: "#contato" },
 ] as const;
 
 export const links = {
-  linkedin: "https://www.linkedin.com/",
-  lattes: "http://lattes.cnpq.br/",
-  email: "mailto:contato@michelcalil.com",
+  linkedin: "https://www.linkedin.com/in/michelcalil/",
+  lattes:
+    "https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4452853P7",
+  email: "mailto:contato@michelcalilabraoneto.com.br",
+  whatsapp: "https://wa.me/5532987120007",
 };

@@ -6,7 +6,7 @@ export function Metric({
   value,
   label,
   detail,
-  valueClassName = "text-5xl md:text-6xl",
+  valueClassName = "text-5xl md:text-6xl text-off-white",
 }: {
   value: string;
   label: string;
@@ -23,7 +23,7 @@ export function Metric({
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       <div
-        className={`font-heading font-medium tracking-tight text-off-white ${valueClassName}`}
+        className={`font-heading font-medium tracking-tight ${valueClassName}`}
       >
         {reduced ? (
           value

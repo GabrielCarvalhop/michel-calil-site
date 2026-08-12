@@ -1,18 +1,22 @@
-import { BrandMark } from "./BrandMark";
+import Image from "next/image";
 
 /**
- * Elegant placeholder for real photography. Swap for <Image> pointing
- * at the actual asset in /public/images once files are provided.
+ * Elegant placeholder for real photography. Swap `src` for the real
+ * asset in /public/images once the file is provided — everything else
+ * (mask, overlay) can stay as-is. Purely decorative: no visible copy is
+ * rendered to visitors, only a data attribute for grepping later.
  */
 export function PhotoPlaceholder({
   className = "",
-  label = "Foto — substituir",
+  label = "pending photography",
 }: {
   className?: string;
   label?: string;
 }) {
   return (
     <div
+      aria-hidden
+      data-placeholder={label}
       className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-dark-teal via-deep-teal to-near-black ${className}`}
     >
       <div
@@ -23,10 +27,13 @@ export function PhotoPlaceholder({
           color: "var(--color-mint)",
         }}
       />
-      <BrandMark className="w-16 h-14 text-mint/25" />
-      <span className="absolute bottom-4 left-4 text-[11px] uppercase tracking-[0.18em] text-muted/70">
-        {label}
-      </span>
+      <Image
+        src="/images/brand/symbol-mint.png"
+        alt=""
+        width={64}
+        height={58}
+        className="h-14 w-16 object-contain opacity-[0.18]"
+      />
     </div>
   );
 }

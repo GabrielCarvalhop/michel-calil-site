@@ -1,52 +1,86 @@
 import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
-import { Metric } from "@/components/ui/Metric";
-import { AnimatedLine } from "@/components/ui/AnimatedLine";
+import { CountUpNumber } from "@/components/ui/CountUpNumber";
 import { metrics } from "@/lib/data";
 
+const cardBase =
+  "rounded-2xl border border-off-white/[0.08] bg-off-white/[0.025] p-6 md:p-8 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[2px] hover:border-mint/25 hover:shadow-[0_0_28px_-14px_rgba(113,208,181,0.5)]";
+
 export function Metrics() {
-  const [primary, ...rest] = metrics;
+  const [primary, unidades, rematricula, captacao, nps] = metrics;
 
   return (
-    <section className="relative py-28 md:py-40 border-t border-off-white/10">
-      <Container>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-7">
-            <Reveal>
-              <SectionLabel>Gestão em números</SectionLabel>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className="font-heading font-medium text-off-white mt-5 text-3xl md:text-[44px] leading-tight tracking-tight max-w-[560px]">
-                Estratégia traduzida em resultados.
-              </h2>
-            </Reveal>
-          </div>
-        </div>
+    <section className="relative py-24 md:py-32 overflow-hidden border-t border-off-white/10">
+      <Container className="relative">
+        <Reveal className="flex items-baseline justify-between">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-mint">
+            Gestão em números
+          </p>
+          <p className="hidden text-sm text-muted md:block">
+            Estratégia traduzida em resultados.
+          </p>
+        </Reveal>
 
-        <div className="mt-16 md:mt-20 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
-          <div className="md:col-span-5">
-            <Metric
-              value={primary.value}
-              label={primary.label}
-              detail={primary.detail}
-              valueClassName="text-7xl md:text-8xl"
-            />
-          </div>
-
-          <div className="md:col-span-7">
-            <AnimatedLine className="mb-10 hidden md:block" />
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:gap-y-12">
-              {rest.map((m) => (
-                <Metric
-                  key={m.label}
-                  value={m.value}
-                  label={m.label}
-                  detail={m.detail}
-                  valueClassName="text-4xl md:text-5xl"
-                />
-              ))}
+        <div className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-center md:gap-12">
+          {/* the dominant event of the section — bleeds past the
+              left edge, no container, no card */}
+          <Reveal delay={0.1} className="md:shrink-0 md:-ml-[2vw] lg:-ml-[4vw]">
+            <div className="font-heading font-medium text-off-white tracking-tight leading-[0.78] text-[26vw] sm:text-[20vw] md:text-[clamp(120px,14vw,220px)]">
+              <CountUpNumber value={primary.value} />
             </div>
+            <div className="-mt-1 md:-mt-2 pl-1">
+              <div className="text-sm md:text-[15px] uppercase tracking-[0.14em] text-off-white/85">
+                {primary.label}
+              </div>
+              <div className="mt-1 text-sm text-muted">{primary.detail}</div>
+            </div>
+          </Reveal>
+
+          {/* secondary indicators — compact, styled cards, filling
+              whatever width remains next to the dominant number */}
+          <div className="mt-10 md:mt-0 grid grid-cols-2 gap-4 md:flex-1 md:gap-6">
+            <Reveal delay={0.18} className={cardBase}>
+              <div className="font-heading font-medium text-off-white text-3xl md:text-5xl tracking-tight">
+                <CountUpNumber value={unidades.value} />
+              </div>
+              <div className="mt-3 text-xs uppercase tracking-[0.12em] text-off-white/70">
+                {unidades.label}
+              </div>
+              <div className="mt-1 text-xs text-muted">{unidades.detail}</div>
+            </Reveal>
+
+            <Reveal delay={0.24} className={cardBase}>
+              <div className="font-heading font-medium text-off-white text-3xl md:text-5xl tracking-tight">
+                <CountUpNumber value={rematricula.value} />
+              </div>
+              <div className="mt-3 text-xs uppercase tracking-[0.12em] text-off-white/70">
+                {rematricula.label}
+              </div>
+              <div className="mt-1 text-xs text-muted">{rematricula.detail}</div>
+            </Reveal>
+
+            <Reveal delay={0.3} className={cardBase}>
+              <div className="font-heading font-medium text-off-white text-3xl md:text-5xl tracking-tight">
+                <CountUpNumber value={captacao.value} />
+              </div>
+              <div className="mt-3 text-xs uppercase tracking-[0.12em] text-off-white/70">
+                {captacao.label}
+              </div>
+              <div className="mt-1 text-xs text-muted">{captacao.detail}</div>
+            </Reveal>
+
+            <Reveal
+              delay={0.36}
+              className={`${cardBase} border-mint/20 bg-mint/[0.04]`}
+            >
+              <div className="font-heading font-medium text-mint text-3xl md:text-5xl tracking-tight">
+                <CountUpNumber value={nps.value} />
+              </div>
+              <div className="mt-3 text-xs uppercase tracking-[0.12em] text-off-white/70">
+                {nps.label}
+              </div>
+              <div className="mt-1 text-xs text-muted">{nps.detail}</div>
+            </Reveal>
           </div>
         </div>
       </Container>
