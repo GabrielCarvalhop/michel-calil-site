@@ -69,7 +69,7 @@ export function Manifesto() {
             className="relative mt-8 h-[42vh] w-full overflow-hidden rounded-2xl border border-off-white/[0.08] md:hidden"
           >
             <Image
-              src="/images/palestras-orlando.jpg"
+              src="/images/palestras-orlando-optimized.webp"
               alt=""
               fill
               unoptimized
@@ -102,7 +102,7 @@ export function Manifesto() {
           className="relative hidden overflow-hidden rounded-2xl border border-off-white/[0.08] md:col-span-5 md:col-start-8 md:block"
         >
           <Image
-            src="/images/palestras-orlando.jpg"
+            src="/images/palestras-orlando-optimized.webp"
             alt=""
             fill
             unoptimized
