@@ -6,40 +6,37 @@ export function Awards() {
   const [headline, ...rest] = awards;
 
   return (
-    <section className="relative py-28 md:py-40 border-t border-off-white/10">
-      <Container className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
+    <section className="relative py-16 border-t border-off-white/10">
+      <Container className="grid grid-cols-1 gap-8 md:grid-cols-12">
         <Reveal className="md:col-span-4">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-mint mb-5">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-mint mb-3.5">
             Reconhecimentos
           </p>
-          <h2 className="font-heading font-medium text-off-white text-2xl md:text-[28px] leading-tight tracking-tight max-w-[300px]">
-            Reconhecimento como consequência de uma trajetória consistente.
+          <h2 className="font-heading font-medium text-off-white text-[22px] leading-snug max-w-[280px]">
+            Consequência de uma trajetória consistente.
           </h2>
         </Reveal>
 
-        <div className="md:col-span-8">
-          {/* the headline award — set apart, not just first-in-a-list */}
-          <Reveal delay={0.08} className="border-b border-off-white/[0.1] pb-8">
-            <span className="font-heading font-medium text-mint text-3xl md:text-4xl tabular-nums">
+        <div className="md:col-span-7 md:col-start-6">
+          <Reveal delay={0.08} className="flex items-baseline gap-6 pb-5 border-b border-off-white/10">
+            <span className="font-heading font-semibold text-mint text-[22px]">
               {headline.year}
             </span>
-            <p className="mt-3 font-heading text-xl md:text-2xl text-off-white leading-snug max-w-[520px]">
-              {headline.title}
-            </p>
+            <span className="text-[16px] text-off-white">{headline.title}</span>
           </Reveal>
 
-          <RevealGroup className="divide-y divide-off-white/[0.08]">
+          <RevealGroup>
             {rest.map((a, i) => (
               <RevealItem
                 key={`${a.year}-${i}`}
-                className="group flex flex-col gap-1.5 py-5 md:flex-row md:items-baseline md:gap-10"
+                className={`flex items-baseline gap-6 py-3.5 ${
+                  i < rest.length - 1 ? "border-b border-off-white/[0.08]" : ""
+                }`}
               >
-                <span className="font-heading text-off-white/60 text-base w-16 shrink-0 tabular-nums">
+                <span className="w-10 shrink-0 text-sm text-off-white/60">
                   {a.year}
                 </span>
-                <span className="text-[15px] text-off-white/75 leading-snug transition-colors duration-300 group-hover:text-off-white">
-                  {a.title}
-                </span>
+                <span className="text-sm text-off-white/75">{a.title}</span>
               </RevealItem>
             ))}
           </RevealGroup>

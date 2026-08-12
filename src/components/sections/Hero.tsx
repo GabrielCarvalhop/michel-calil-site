@@ -10,7 +10,6 @@ const easing = [0.16, 1, 0.3, 1] as const;
 const ctaBase =
   "rounded-2xl px-6 py-4 text-sm uppercase tracking-[0.1em] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]";
 const ctaPrimary = `${ctaBase} border border-mint/40 bg-mint/[0.08] text-off-white hover:bg-mint/[0.14] hover:border-mint/70 hover:shadow-[0_0_24px_-4px_rgba(113,208,181,0.4)]`;
-const ctaSecondary = `${ctaBase} border border-off-white/[0.14] bg-near-black/40 text-muted backdrop-blur-sm hover:border-mint/30 hover:text-mint`;
 
 export function Hero() {
   return (
@@ -108,7 +107,7 @@ export function Hero() {
               href={links.lattes}
               target="_blank"
               rel="noreferrer"
-              className={ctaSecondary}
+              className={ctaPrimary}
             >
               Currículo Lattes
             </a>

@@ -37,9 +37,6 @@ export function Footer() {
           <a href={links.email} className="hover:text-mint transition-colors duration-300">
             E-mail
           </a>
-          <a href={links.whatsapp} target="_blank" rel="noreferrer" className="hover:text-mint transition-colors duration-300">
-            Contato para palestras
-          </a>
         </nav>
 
         <p className="text-xs text-muted">© {year} Michel Calil Abrão Neto</p>

@@ -189,7 +189,6 @@ export const awards = [
 ] as const;
 
 export const navLinks = [
-  { label: "Sobre", href: "#manifesto" },
   { label: "Trajetória", href: "#trajetoria" },
   { label: "Gestão", href: "#gestao" },
   { label: "Ciência", href: "#ciencia" },
