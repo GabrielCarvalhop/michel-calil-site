@@ -28,7 +28,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled
-          ? "bg-near-black/80 backdrop-blur-sm border-b border-off-white/10"
+          ? "bg-near-black/95 border-b border-off-white/10 md:bg-near-black/80 md:backdrop-blur-sm"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -43,6 +43,7 @@ export function Header() {
             alt=""
             width={32}
             height={32}
+            unoptimized
             className="h-7 w-7 object-contain"
           />
           <span className="font-heading text-sm tracking-[0.08em] hidden sm:inline">
@@ -80,9 +81,11 @@ export function Header() {
 
         <button
           type="button"
-          onClick={() => setOpen(true)}
-          className="md:hidden text-off-white"
+          onClick={() => setOpen((current) => !current)}
+          className="flex h-11 w-11 items-center justify-center text-off-white md:hidden"
           aria-label="Abrir menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           <Menu size={24} />
         </button>
@@ -91,25 +94,27 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-near-black md:hidden"
+            className="fixed inset-0 z-[60] flex min-h-[100svh] flex-col overflow-y-auto bg-near-black md:hidden"
           >
             <div className="flex items-center justify-between px-6 py-5">
               <Image
-            src="/images/brand/symbol-mint.png"
-            alt=""
-            width={32}
-            height={32}
-            className="h-7 w-7 object-contain"
-          />
+                src="/images/brand/symbol-mint.png"
+                alt=""
+                width={32}
+                height={32}
+                unoptimized
+                className="h-7 w-7 object-contain"
+              />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Fechar menu"
-                className="text-off-white"
+                className="flex h-11 w-11 items-center justify-center text-off-white"
               >
                 <X size={26} />
               </button>
