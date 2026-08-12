@@ -72,6 +72,7 @@ export function Manifesto() {
               src="/images/palestras-orlando.jpg"
               alt=""
               fill
+              unoptimized
               className="object-cover grayscale -scale-x-100"
               style={{ objectPosition: "50% 12%", filter: "brightness(0.75)" }}
             />
@@ -104,6 +105,7 @@ export function Manifesto() {
             src="/images/palestras-orlando.jpg"
             alt=""
             fill
+            unoptimized
             className="object-cover grayscale -scale-x-100"
             style={{ objectPosition: "50% 12%", filter: "brightness(0.7)" }}
           />

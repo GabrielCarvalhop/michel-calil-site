@@ -19,12 +19,12 @@ export function Education() {
           {education.map((e, i) => (
             <RevealItem
               key={e.degree}
-              className={`flex items-center justify-between gap-5 py-4 ${
+              className={`flex flex-col items-start gap-1 py-4 md:flex-row md:items-center md:justify-between md:gap-5 ${
                 i < education.length - 1 ? "border-b border-off-white/[0.07]" : ""
               }`}
             >
               <span className="text-[15px] text-off-white/90">{e.degree}</span>
-              <span className="shrink-0 text-xs uppercase tracking-[0.06em] text-muted whitespace-nowrap">
+              <span className="max-w-full text-left text-xs uppercase tracking-[0.06em] text-muted break-words md:shrink-0 md:text-right md:whitespace-nowrap">
                 {e.institution}
               </span>
             </RevealItem>

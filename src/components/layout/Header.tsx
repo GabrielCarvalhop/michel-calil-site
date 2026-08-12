@@ -50,12 +50,12 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden items-center gap-5 md:flex xl:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-[13px] uppercase tracking-[0.1em] text-off-white/80 hover:text-mint transition-colors duration-300"
+              className="text-[12px] uppercase tracking-[0.1em] text-off-white/80 transition-colors duration-300 hover:text-mint xl:text-[13px]"
             >
               {link.label}
             </a>
@@ -64,9 +64,17 @@ export function Header() {
             href={links.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1 text-[13px] uppercase tracking-[0.1em] text-muted hover:text-mint transition-colors duration-300"
+            className="flex items-center gap-1 text-[12px] uppercase tracking-[0.1em] text-muted transition-colors duration-300 hover:text-mint xl:text-[13px]"
           >
             LinkedIn <ArrowUpRight size={13} />
+          </a>
+          <a
+            href={links.lattes}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1 text-[12px] uppercase tracking-[0.1em] text-muted transition-colors duration-300 hover:text-mint xl:text-[13px]"
+          >
+            Lattes <ArrowUpRight size={13} />
           </a>
         </nav>
 
@@ -127,6 +135,14 @@ export function Header() {
                 className="mt-4 flex items-center gap-2 text-sm uppercase tracking-[0.1em] text-mint"
               >
                 LinkedIn <ArrowUpRight size={16} />
+              </a>
+              <a
+                href={links.lattes}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-sm uppercase tracking-[0.1em] text-mint"
+              >
+                Currículo Lattes <ArrowUpRight size={16} />
               </a>
             </nav>
           </motion.div>

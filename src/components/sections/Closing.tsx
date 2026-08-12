@@ -1,11 +1,17 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { links } from "@/lib/data";
 
 export function Closing() {
   return (
-    <section id="contato" className="relative py-20 border-t border-off-white/10">
-      <Container className="mx-auto max-w-[820px] text-center">
+    <section id="contato" className="relative isolate overflow-hidden py-20 border-t border-off-white/10">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <div className="relative h-[300px] w-[300px] opacity-[0.065] md:h-[440px] md:w-[440px]">
+          <Image src="/images/brand/symbol-mint.png" alt="" fill sizes="(min-width: 768px) 440px, 300px" className="object-contain" />
+        </div>
+      </div>
+      <Container className="relative z-10 mx-auto max-w-[820px] text-center">
         <Reveal>
           <h2 className="font-heading font-medium text-off-white text-3xl md:text-[40px] leading-[1.15] tracking-tight">
             O próximo avanço da educação começa com as decisões que tomamos
