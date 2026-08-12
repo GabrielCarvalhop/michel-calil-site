@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { links } from "@/lib/data";
@@ -7,9 +6,10 @@ export function Closing() {
   return (
     <section id="contato" className="relative isolate overflow-hidden py-20 border-t border-off-white/10">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-        <div className="relative h-[300px] w-[300px] opacity-[0.065] md:h-[440px] md:w-[440px]">
-          <Image src="/images/brand/symbol-mint.png" alt="" fill sizes="(min-width: 768px) 440px, 300px" className="object-contain" />
-        </div>
+        <div
+          className="h-[300px] w-[300px] bg-contain bg-center bg-no-repeat opacity-[0.065] md:h-[440px] md:w-[440px]"
+          style={{ backgroundImage: "url('/images/brand/symbol-mint.png')" }}
+        />
       </div>
       <Container className="relative z-10 mx-auto max-w-[820px] text-center">
         <Reveal>
