@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Instrument_Sans } from "next/font/google";
+import { Preloader } from "@/components/ui/Preloader";
 import "./globals.css";
 
 const sora = Sora({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${sora.variable} ${instrument.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-near-black text-off-white">
+        <Preloader />
         {children}
       </body>
     </html>

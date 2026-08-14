@@ -57,3 +57,47 @@ button:focus-visible {
 .font-heading {
   font-family: var(--font-heading);
 }
+
+@keyframes symbol-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.065;
+    filter: drop-shadow(0 0 0px rgba(113, 208, 181, 0));
+  }
+  50% {
+    opacity: 0.16;
+    filter: drop-shadow(0 0 26px rgba(113, 208, 181, 0.6));
+  }
+}
+
+.animate-symbol-pulse {
+  animation: symbol-pulse-glow 4.5s ease-in-out infinite;
+}
+
+@keyframes logo-pulse-glow-intense {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(113, 208, 181, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 46px rgba(113, 208, 181, 0.95));
+  }
+}
+
+.animate-logo-pulse-intense {
+  animation: logo-pulse-glow-intense 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-logo-pulse-intense {
+    animation: none;
+    filter: drop-shadow(0 0 16px rgba(113, 208, 181, 0.5));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-symbol-pulse {
+    animation: none;
+    opacity: 0.08;
+  }
+}

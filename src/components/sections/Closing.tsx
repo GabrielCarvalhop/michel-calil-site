@@ -7,7 +7,7 @@ export function Closing() {
     <section id="contato" className="relative isolate overflow-hidden py-20 border-t border-off-white/10">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
         <div
-          className="h-[300px] w-[300px] bg-contain bg-center bg-no-repeat opacity-[0.065] md:h-[440px] md:w-[440px]"
+          className="animate-symbol-pulse h-[300px] w-[300px] bg-contain bg-center bg-no-repeat md:h-[440px] md:w-[440px]"
           style={{ backgroundImage: "url('/images/brand/symbol-mint.png')" }}
         />
       </div>
