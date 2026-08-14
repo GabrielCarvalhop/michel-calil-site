@@ -6,7 +6,16 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const easing = [0.16, 1, 0.3, 1] as const;
 
+// how long the logo stays on screen once it has actually loaded, so the
+// glow/blur-in animation always gets to play even on a fast connection
+const MIN_DISPLAY_MS = 900;
+// hard cap — if the image somehow never fires load/error (offline,
+// blocked request, etc.) the preloader still releases the site
+const MAX_WAIT_MS = 4500;
+
 export function Preloader() {
+  const [imageReady, setImageReady] = useState(false);
+  const [minTimeDone, setMinTimeDone] = useState(false);
   const [visible, setVisible] = useState(true);
   const reduced = useReducedMotion();
 
@@ -18,10 +27,25 @@ export function Preloader() {
   }, [visible]);
 
   useEffect(() => {
-    const total = reduced ? 500 : 2000;
-    const timer = setTimeout(() => setVisible(false), total);
-    return () => clearTimeout(timer);
+    const minTimer = setTimeout(
+      () => setMinTimeDone(true),
+      reduced ? 200 : MIN_DISPLAY_MS
+    );
+    // fail-safe: never block the site indefinitely if the image request
+    // stalls (slow/offline mobile network)
+    const maxTimer = setTimeout(() => {
+      setImageReady(true);
+      setMinTimeDone(true);
+    }, MAX_WAIT_MS);
+    return () => {
+      clearTimeout(minTimer);
+      clearTimeout(maxTimer);
+    };
   }, [reduced]);
+
+  useEffect(() => {
+    if (imageReady && minTimeDone) setVisible(false);
+  }, [imageReady, minTimeDone]);
 
   return (
     <AnimatePresence>
@@ -35,7 +59,11 @@ export function Preloader() {
         >
           <motion.div
             initial={{ opacity: 0, scale: 1.06, filter: "blur(22px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            animate={
+              imageReady
+                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+                : { opacity: 0.3 }
+            }
             transition={{ duration: reduced ? 0.3 : 1.3, ease: easing }}
           >
             <Image
@@ -44,6 +72,8 @@ export function Preloader() {
               width={240}
               height={240}
               priority
+              onLoad={() => setImageReady(true)}
+              onError={() => setImageReady(true)}
               className="h-auto w-[150px] md:w-[210px] animate-logo-pulse-intense"
             />
           </motion.div>
