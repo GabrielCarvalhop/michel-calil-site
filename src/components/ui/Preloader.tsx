@@ -72,6 +72,7 @@ export function Preloader() {
               width={240}
               height={240}
               priority
+              unoptimized
               onLoad={() => setImageReady(true)}
               onError={() => setImageReady(true)}
               className="h-auto w-[150px] md:w-[210px] animate-logo-pulse-intense"
