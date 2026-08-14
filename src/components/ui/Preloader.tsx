@@ -8,7 +8,8 @@ const easing = [0.16, 1, 0.3, 1] as const;
 
 // how long the logo stays on screen once it has actually loaded, so the
 // glow/blur-in animation always gets to play even on a fast connection
-const MIN_DISPLAY_MS = 900;
+// (must be >= the blur-in transition duration below, or it gets cut off)
+const MIN_DISPLAY_MS = 1700;
 // hard cap — if the image somehow never fires load/error (offline,
 // blocked request, etc.) the preloader still releases the site
 const MAX_WAIT_MS = 4500;
